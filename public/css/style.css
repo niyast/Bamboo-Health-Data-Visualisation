@@ -1,0 +1,184 @@
+
+:selection{ background-color: #E13300; color: white; }
+:moz-selection{ background-color: #E13300; color: white; }
+:webkit-selection{ background-color: #E13300; color: white; }
+
+body {
+    background-color: #fff;
+    margin: 40px;
+    font: 13px/20px normal Helvetica, Arial, sans-serif;
+    color: #4F5155;
+    width: 96%;
+}
+
+a {
+    color: #003399;
+    background-color: transparent;
+    font-weight: normal;
+}
+
+h1 {
+    color: #444;
+    background-color: transparent;
+    border-bottom: 1px solid #D0D0D0;
+    font-size: 19px;
+    font-weight: normal;
+    margin: 0 0 14px 0;
+    padding: 14px 15px 10px 15px;
+}
+
+code {
+    font-family: Consolas, Monaco, Courier New, Courier, monospace;
+    font-size: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #D0D0D0;
+    color: #002166;
+    display: block;
+    margin: 14px 0 14px 0;
+    padding: 12px 10px 12px 10px;
+}
+
+#body{
+    margin: 0 15px 0 15px;
+}
+
+p.footer{
+    text-align: right;
+    font-size: 11px;
+    border-top: 1px solid #D0D0D0;
+    line-height: 32px;
+    padding: 0 10px 0 10px;
+    margin: 20px 0 0 0;
+}
+
+#container{
+    margin: 10px;
+    border: 1px solid #D0D0D0;
+    -webkit-box-shadow: 0 0 8px #D0D0D0;
+}
+
+#wrapper {
+    width:450px;
+    margin:0 auto;
+    font-family:Verdana, sans-serif;
+}
+legend {
+    color:#0481b1;
+    font-size:16px;
+    padding:0 10px;
+    background:#fff;
+    -moz-border-radius:4px;
+    box-shadow: 0 1px 5px rgba(4, 129, 177, 0.5);
+    padding:5px 10px;
+    text-transform:uppercase;
+    font-family:Helvetica, sans-serif;
+    font-weight:bold;
+}
+fieldset {
+    background: linear-gradient( #F9FDFF,#dddddd) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: rgba(4, 129, 177, 0.66);
+    border-radius: 4px;
+    opacity: 0.9;
+    padding: 20px;
+}
+input,
+textarea {
+    color: #373737;
+    background: #fff;
+    border: 1px solid #CCCCCC;
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.2em;
+    margin-bottom:15px;
+
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+input[type="text"],
+input[type="password"]{
+    padding: 8px 6px;
+    height: 18px;
+    width:250px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background:#f5fcfe;
+    text-indent: 0;
+    z-index: 1;
+    color: #373737;
+    -webkit-transition-duration: 400ms;
+    -webkit-transition-property: width, background;
+    -webkit-transition-timing-function: ease;
+    -moz-transition-duration: 400ms;
+    -moz-transition-property: width, background;
+    -moz-transition-timing-function: ease;
+    -o-transition-duration: 400ms;
+    -o-transition-property: width, background;
+    -o-transition-timing-function: ease;
+    width: 380px;
+
+    border-color:#ccc;
+    box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
+    opacity:0.6;
+}
+input[type="submit"]{
+    background: #222;
+    border: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+    text-transform:uppercase;
+    color: #eee;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 5px 0;
+    padding: 5px 22px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-border-radius:4px;
+    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+}
+textarea {
+    padding:3px;
+    width:55%;
+    height:100px;
+}
+textarea:focus {
+    background:#ebf8fd;
+    text-indent: 0;
+    z-index: 1;
+    color: #373737;
+    opacity:0.6;
+    box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
+    border-color:#ccc;
+}
+.small {
+    line-height:14px;
+    font-size:12px;
+    color:#999898;
+    margin-bottom:3px;
+}
+input:invalid, textarea:invalid {background-color: #F9FDFF !important; }
+.footer{ background: none !important;}
+.fld2{width:58%; background-color: #F9FDFF; padding:10px 10px;border: 1px solid #CCCCCC; border-radius:3px; margin-bottom: 13px; }
+.subLinks{
+     width: auto; background:#f1f1f1;height: 40px;
+}
+.subLinks a {
+    width: auto;
+    margin: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: large;
+    display: inline-block;
+    
+}
+
+.subLinks a:hover {
+    color: #0000ff;
+}
+
+.blocker{z-index:1000;height:200%;width:100%;background: gray; opacity:0.7; position: absolute;margin-left: -40px; margin-top: -40px; }
+
