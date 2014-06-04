@@ -11,22 +11,21 @@ class Welcome extends MY_Controller {
         $this->load->model('loguser', '', TRUE);
     }
 
+
     public function index() {
-        
-//        $epoch = 1386904929319/1000; echo date('r', $epoch);exit;
-        
+//            echo base_url();exit;
         require_once 'public/src/Google_Client.php';
         require_once 'public/src/contrib/Google_PlusService.php';
         require_once 'public/src/contrib/Google_Oauth2Service.php';
 
         session_start();
         $client = new Google_Client();
-        $client->setApplicationName("Mobile Health data visualization"); // Set your applicatio name
+        $client->setApplicationName("Bamboo Mobile Health data visualization"); // Set your applicatio name
         $client->setScopes(array('https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/plus.me')); // set scope during user login
-        $client->setClientId('600219881603.apps.googleusercontent.com'); // paste the client id which you get from google API Console
-        $client->setClientSecret('ngcIPU_XmpaoB5M1s84cLB1K'); // set the client secret
-        $client->setRedirectUri('https://localhost/mdv/'); // paste the redirect URI where you given in APi Console. You will get the Access Token here during login success
-        $client->setDeveloperKey('AIzaSyA_UfEquP6Luzy__N-jgmYQ-YD6GxfD164'); // Developer key
+        $client->setClientId('604161453489.apps.googleusercontent.com'); // paste the client id which you get from google API Console
+        $client->setClientSecret('RX6ImZQgzDgmNLXKym-Of2ex'); // set the client secret
+        $client->setRedirectUri('http://www.adoxsolutions.in/projects/mdv/'); // paste the redirect URI where you given in APi Console. You will get the Access Token here during login success
+        $client->setDeveloperKey('AIzaSyA67M94yqZxoTWH0UakbslnB0T_bv65L4E'); // Developer key
         $plus = new Google_PlusService($client);
         $oauth2 = new Google_Oauth2Service($client); // Call the OAuth2 class for get email address
         if (isset($_GET['code'])) {
@@ -83,57 +82,79 @@ class Welcome extends MY_Controller {
             $this->load->view('login', $data);
         }
     }
+    
+    public function getUsers() {
+        header('Content-type: application/json');
+
+        $type = $_POST['type'];
+        $bid = $_POST['bid'];
+        $feed = "https://canary.elastic.snaplogic.com/api/1/rest/slsched/feed/snaplogic/projects/rethesh/getUsers?user_id=$bid";
+        $keys = array();
+        $newArray = array();
+
+        $cred = sprintf('Authorization: Basic %s', base64_encode("rgeorge@snaplogic.com:bmh@123"));
+        $opts = array(
+            'http' => array(
+                'method' => 'GET',
+                'header' => $cred)
+        );
+        $ctx = stream_context_create($opts);
+        $handle = fopen($feed, 'r', false, $ctx);
+
+        $try = stream_get_contents($handle);
+//        echo($try);exit;
+
+        echo $try;
+    }
 
     public function getDatacsv() {
         header('Content-type: application/json');
 
-// Set your CSV feed
-//        $feed = 'https://docs.google.com/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
-$feed = 'https://docs.google.com/a/ms101.me/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
-// Arrays we'll use later
+
+        $type = $_POST['type'];
+        $bid = $_POST['bid'];
+        $feed = "https://canary.elastic.snaplogic.com/api/1/rest/slsched/feed/snaplogic/projects/rethesh/getData?id=$bid";
         $keys = array();
         $newArray = array();
 
-// Function to convert CSV into associative array
-// Do it
-        //$data = csvToArray($feed, ',');
-        if (($handle = fopen($feed, 'r')) !== FALSE) {
-            $i = 0;
-            while (($lineArray = fgetcsv($handle, 4000, ',', '"')) !== FALSE) {
-                for ($j = 0; $j < count($lineArray); $j++) {
-                    $arr[$i][$j] = $lineArray[$j];
-                }
-                $i++;
-            }
-            fclose($handle);
-        }
-        $data = $arr;
+        $cred = sprintf('Authorization: Basic %s', base64_encode("rgeorge@snaplogic.com:bmh@123"));
+        $opts = array(
+            'http' => array(
+                'method' => 'GET',
+                'header' => $cred)
+        );
+        $ctx = stream_context_create($opts);
+        $handle = fopen($feed, 'r', false, $ctx);
 
-// Set number of elements (minus 1 because we shift off the first row)
-        $count = count($data) - 1;
+        $try = stream_get_contents($handle);
+//        echo($try);exit;
 
-//Use first row for names  
-        $labels = array_shift($data);
+        echo $try;
 
-        foreach ($labels as $label) {
-            $keys[] = $label;
-        }
+    }
 
-// Add Ids, just in case we want them later
-        $keys[] = 'id';
+    public function getDataEnvrmnt() {
+        header('Content-type: application/json');
 
-        for ($i = 0; $i < $count; $i++) {
-            $data[$i][] = $i;
-        }
+        $type = $_POST['type'];
+        $bid = $_POST['bid'];
+        $feed = "https://canary.elastic.snaplogic.com/api/1/rest/slsched/feed/snaplogic/projects/rethesh/getEnvironmentData?id=$bid";
+        $keys = array();
+        $newArray = array();
 
-// Bring it all together
-        for ($j = 0; $j < $count; $j++) {
-            $d = array_combine($keys, $data[$j]);
-            $newArray[$j] = $d;
-        }
+        $cred = sprintf('Authorization: Basic %s', base64_encode("rgeorge@snaplogic.com:bmh@123"));
+        $opts = array(
+            'http' => array(
+                'method' => 'GET',
+                'header' => $cred)
+        );
+        $ctx = stream_context_create($opts);
+        $handle = fopen($feed, 'r', false, $ctx);
 
-// Print it out as JSON
-        echo json_encode($newArray);
+        $try = stream_get_contents($handle);
+//        echo($try);exit;
+
+        echo $try;
     }
 
     public function logout() {
