@@ -1,7 +1,129 @@
 /* Cal-HeatMap CSS */
 
+
+html { 
+  	background-color: #000060; 
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+  	background-size: cover;
+  	text-align: center;
+}
+
+#title {
+	text-align: center;
+}
+
+#cal2 {
+    position: relative;
+}
+
+#caltitle {
+	font-family: sans-serif;
+	font-size:1.5em;
+	color: #FFFFFF;
+}
+
+p {
+	font-family: sans-serif;
+	font-size:1.25em;
+	
+}
+
+#select {
+	font-family: sans-serif;
+	font-size:1.5em;
+	color: #FFFFFF;
+}
+
+.select {
+	font-family: sans-serif;
+	font-size:1.5em;
+	color: #FFFFFF;
+}
+
+.title-white{
+    font-size: medium; font-weight: 400; text-decoration: none; color: #ffffff;padding: 10px;
+}
+
+
+
+body {
+  font: 10px sans-serif;
+}
+
+.button {
+	width: 6em;
+	height: 3em;
+}
+
+.long-button {
+	width: 10em;
+	height: 3em;
+}
+
+#legend {
+	color: #FFFFFF;
+}
+
+#empty {
+	width: 5em;
+	height: 5em;
+	background-color: #ededed;
+	display: inline-block;
+    color: black;
+}
+
+#zero {
+	width: 5em;
+	height: 5em;
+	background-color: #98FB98;
+	display: inline-block;
+    color: black;
+}
+
+#one {
+	width: 5em;
+	height: 5em;
+	background-color: #ADD8E6;
+	display: inline-block;
+    color: black;
+}
+
+#two {
+	width: 5em;
+	height: 5em;
+	background-color: #56A0D3;
+	display: inline-block;
+    color: white;
+}
+
+#three {
+	width: 5em;
+	height: 5em;
+	background-color: #990099;
+	display: inline-block;
+    color: white;
+}
+
+#four {
+	width: 5em;
+	height: 5em;
+	background-color: #FFA500;
+	display: inline-block;
+    color: white;
+}
+
+#five {
+	width: 5em;
+	height: 5em;
+	background-color: #CC0000;
+	display: inline-block;
+    color: white;
+}
+
 .cal-heatmap-container {
-	display: block;
+	
 }
 
 .graph
@@ -11,8 +133,8 @@
 
 .graph-label
 {
-	fill: #999;
-	font-size: 10px
+	fill: #FFFFFF;
+	font-size: 20px
 }
 
 .graph, .graph-legend rect {
@@ -31,8 +153,8 @@
 }
 
 .subdomain-text {
-	font-size: 8px;
-	fill: #999;
+	font-size: 12px;
+	
 	pointer-events: none
 }
 
@@ -46,43 +168,59 @@
 }
 
 
-/*Remove comment to apply this style to date with value equal to 0*/
+/*empty cells*/
 .q0
 {
 	background-color: #fff;
-	fill: #fff;
+	fill: #ededed;
 	stroke: #ededed
 }
 
 
 .q1
 {
-	background-color: #dae289;
-	fill: #dae289
+	background-color: #999;
+	fill: #ededed;
 }
 
 .q2
 {
 	background-color: #cedb9c;
-	fill: #9cc069
+	fill: #98FB98;
 }
 
 .q3
 {
-	background-color: #b5cf6b;
-	fill: #669d45
+	background-color: #999;
+	fill: #ADD8E6;
 }
 
 .q4
 {
 	background-color: #637939;
-	fill: #637939
+	fill: #56A0D3;
+    color: white;
 }
 
 .q5
 {
 	background-color: #3b6427;
-	fill: #3b6427
+	fill: #990099;
+    color: white;
+}
+.q6
+{
+	background-color: #999;
+	
+	fill: #FFA500;
+    color: white;
+}
+.q7
+{
+	background-color: #999;
+	
+	fill: #CC0000;
+    color: white;
 }
 
 rect.highlight
@@ -108,7 +246,7 @@ text.now
 }
 
 .domain-background {
-	fill: none;
+	fill: transparent;
 	shape-rendering: crispedges
 }
 
@@ -128,7 +266,7 @@ text.now
 	box-sizing: border-box;
 }
 
-.ch-tooltip:after{
+.ch-tooltip::after{
 	position: absolute;
 	width: 0;
 	height: 0;
@@ -141,5 +279,31 @@ text.now
 	left: 50%;
 	margin-left: -6px;
     border-width: 6px 6px 0;
-    border-top-color: #222;
+    border-top-color: black;
+}
+.domain-background {
+	fill: transparent;
+}
+.blocker{z-index:1000;height:150%;width:102.4%;background: gray; opacity:0.7; position: absolute;margin-left: -40px; margin-top: -40px; }
+
+.logout{
+    font-size: large; font-weight: 400; text-decoration: none; color: #ffffff;padding: 10px;
+}
+.logout:hover{
+    text-decoration: underline;
+    color: #ff0033;
+}
+
+img { max-width: 100%; }
+
+@media (min-device-width:600px) {
+    img[data-src-600px] {
+        content: attr(data-src-600px, url);
+    }
+}
+
+@media (min-device-width:800px) {
+    img[data-src-800px] {
+        content: attr(data-src-800px, url);
+    }
 }
