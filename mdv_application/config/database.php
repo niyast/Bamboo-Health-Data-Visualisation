@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'mhdv';
+//$db['default']['username'] = 'root';
+//$db['default']['password'] = '';
+//$db['default']['database'] = 'mhdv';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -64,8 +64,8 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
-//$db['default']['username'] = 'jtwgwisg_mhdv';
-//$db['default']['password'] = 'ZC+R+9iU2Tv2';
-//$db['default']['database'] = 'jtwgwisg_mhdv';
+$db['default']['username'] = 'jtwgwisg_mhdv';
+$db['default']['password'] = 'ZC+R+9iU2Tv2';
+$db['default']['database'] = 'jtwgwisg_mhdv';
 /* End of file database.php */
 /* Location: ./application/config/database.php */
