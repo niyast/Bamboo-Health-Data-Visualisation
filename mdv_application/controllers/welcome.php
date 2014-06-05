@@ -8,10 +8,17 @@ class Welcome extends MY_Controller {
     function __construct() {
         parent::__construct();
 
-        $this->load->model('loguser', '', TRUE);
+//        $this->load->model('loguser', '', TRUE);
     }
 
-
+//        $client->setApplicationName("Bamboo Mobile Health data visualization"); // Set your applicatio name
+//        $client->setScopes(array('https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/plus.me')); // set scope during user login
+//        $client->setClientId('604161453489.apps.googleusercontent.com'); // paste the client id which you get from google API Console
+//        $client->setClientSecret('RX6ImZQgzDgmNLXKym-Of2ex'); // set the client secret
+//        $client->setRedirectUri('http://www.adoxsolutions.in/projects/mdv/'); // paste the redirect URI where you given in APi Console. You will get the Access Token here during login success
+//        $client->setDeveloperKey('AIzaSyA67M94yqZxoTWH0UakbslnB0T_bv65L4E'); // Developer key
+//        $plus = new Google_PlusService($client);
+//        $oauth2 = new Google_Oauth2Service($client);
     public function index() {
 //            echo base_url();exit;
         require_once 'public/src/Google_Client.php';
@@ -20,12 +27,12 @@ class Welcome extends MY_Controller {
 
         session_start();
         $client = new Google_Client();
-        $client->setApplicationName("Bamboo Mobile Health data visualization"); // Set your applicatio name
+        $client->setApplicationName("Mobile Health data visualization"); // Set your applicatio name
         $client->setScopes(array('https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/plus.me')); // set scope during user login
-        $client->setClientId('604161453489.apps.googleusercontent.com'); // paste the client id which you get from google API Console
-        $client->setClientSecret('RX6ImZQgzDgmNLXKym-Of2ex'); // set the client secret
-        $client->setRedirectUri('http://www.adoxsolutions.in/projects/mdv/'); // paste the redirect URI where you given in APi Console. You will get the Access Token here during login success
-        $client->setDeveloperKey('AIzaSyA67M94yqZxoTWH0UakbslnB0T_bv65L4E'); // Developer key
+        $client->setClientId('600219881603.apps.googleusercontent.com'); // paste the client id which you get from google API Console
+        $client->setClientSecret('ngcIPU_XmpaoB5M1s84cLB1K'); // set the client secret
+        $client->setRedirectUri('https://localhost/mdv/'); // paste the redirect URI where you given in APi Console. You will get the Access Token here during login success
+        $client->setDeveloperKey('AIzaSyA_UfEquP6Luzy__N-jgmYQ-YD6GxfD164'); // Developer key
         $plus = new Google_PlusService($client);
         $oauth2 = new Google_Oauth2Service($client); // Call the OAuth2 class for get email address
         if (isset($_GET['code'])) {
@@ -52,26 +59,7 @@ class Welcome extends MY_Controller {
 
         if (isset($me)) {
             $_SESSION['gplusuer'] = $me; // start the session
-//            print_r($user); echo $me['emails'][0]['value'];exit;
 
-            $usercheck = $this->loguser->checkUser($user['id']);
-
-            if (empty($usercheck)) {
-//echo $user['id'];exit;
-                $inputarry['g_user_id'] = $user['id'];
-                $inputarry['user_name'] = $user['name'];
-                $inputarry['user_email'] = $user['email'];
-                if (!empty($user['gender']))
-                    $inputarry['user_gender'] = $user['gender'];
-                if (!empty($user['picture']))
-                    $inputarry['user_image'] = $user['picture'];
-                $inputarry['log_time'] = time();
-
-                $new = $this->loguser->addUser($inputarry);
-                $data['text'] = 'Hi ' . $user['name'] . '. Thanks For Registering.';
-            } else {
-                $data['text'] = 'Welocome back ' . $user['name'];
-            }
         }
         $data['authUrl'] = isset($authUrl) ? $authUrl : '';
         $data['user'] = isset($user) ? $user : '';
@@ -85,6 +73,11 @@ class Welcome extends MY_Controller {
     
     public function getUsers() {
         header('Content-type: application/json');
+
+// Set your CSV feed
+//        $feed = 'https://docs.google.com/a/ms101.me/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
+//$feed = base_url() . 'public/BambooData.csv';
+// Arrays we'll use later
 
         $type = $_POST['type'];
         $bid = $_POST['bid'];
@@ -110,6 +103,10 @@ class Welcome extends MY_Controller {
     public function getDatacsv() {
         header('Content-type: application/json');
 
+// Set your CSV feed
+//        $feed = 'https://docs.google.com/a/ms101.me/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
+//$feed = base_url() . 'public/BambooData.csv';
+// Arrays we'll use later
 
         $type = $_POST['type'];
         $bid = $_POST['bid'];
@@ -135,6 +132,11 @@ class Welcome extends MY_Controller {
 
     public function getDataEnvrmnt() {
         header('Content-type: application/json');
+
+// Set your CSV feed
+//        $feed = 'https://docs.google.com/a/ms101.me/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
+//$feed = base_url() . 'public/BambooData.csv';
+// Arrays we'll use later
 
         $type = $_POST['type'];
         $bid = $_POST['bid'];
