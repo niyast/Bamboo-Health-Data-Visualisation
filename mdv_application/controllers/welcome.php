@@ -8,17 +8,9 @@ class Welcome extends MY_Controller {
     function __construct() {
         parent::__construct();
 
-//        $this->load->model('loguser', '', TRUE);
     }
 
-//        $client->setApplicationName("Bamboo Mobile Health data visualization"); // Set your applicatio name
-//        $client->setScopes(array('https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/plus.me')); // set scope during user login
-//        $client->setClientId('604161453489.apps.googleusercontent.com'); // paste the client id which you get from google API Console
-//        $client->setClientSecret('RX6ImZQgzDgmNLXKym-Of2ex'); // set the client secret
-//        $client->setRedirectUri('http://www.adoxsolutions.in/projects/mdv/'); // paste the redirect URI where you given in APi Console. You will get the Access Token here during login success
-//        $client->setDeveloperKey('AIzaSyA67M94yqZxoTWH0UakbslnB0T_bv65L4E'); // Developer key
-//        $plus = new Google_PlusService($client);
-//        $oauth2 = new Google_Oauth2Service($client);
+
     public function index() {
 //            echo base_url();exit;
         require_once 'public/src/Google_Client.php';
@@ -75,8 +67,6 @@ class Welcome extends MY_Controller {
         header('Content-type: application/json');
 
 // Set your CSV feed
-//        $feed = 'https://docs.google.com/a/ms101.me/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
-//$feed = base_url() . 'public/BambooData.csv';
 // Arrays we'll use later
 
         $type = $_POST['type'];
@@ -103,11 +93,6 @@ class Welcome extends MY_Controller {
     public function getDatacsv() {
         header('Content-type: application/json');
 
-// Set your CSV feed
-//        $feed = 'https://docs.google.com/a/ms101.me/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
-//$feed = base_url() . 'public/BambooData.csv';
-// Arrays we'll use later
-
         $type = $_POST['type'];
         $bid = $_POST['bid'];
         $feed = "https://canary.elastic.snaplogic.com/api/1/rest/slsched/feed/snaplogic/projects/rethesh/getData?id=$bid";
@@ -133,10 +118,6 @@ class Welcome extends MY_Controller {
     public function getDataEnvrmnt() {
         header('Content-type: application/json');
 
-// Set your CSV feed
-//        $feed = 'https://docs.google.com/a/ms101.me/spreadsheet/pub?key=0Ast_cj5gE1aLdHJYYzRZMlk4WExPUl91YnJyN1dzelE&single=true&gid=0&output=csv';
-//$feed = base_url() . 'public/BambooData.csv';
-// Arrays we'll use later
 
         $type = $_POST['type'];
         $bid = $_POST['bid'];
